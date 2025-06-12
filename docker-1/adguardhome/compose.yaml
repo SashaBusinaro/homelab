@@ -9,15 +9,15 @@ services:
     ports:
       - "53:53/tcp"
       - "53:53/udp"
-      # - "67:67/udp"
-      # - "68:68/udp"
-      - "80:80/tcp"
+      # - "67:67/udp" DHCP
+      # - "68:68/udp" DHCP
+      - "80:80/tcp" # Web interface
       - "443:443/tcp"
       - "443:443/udp"
-      - "3000:3000/tcp"
-      - "853:853/tcp"
-      - "784:784/udp"
-      - "853:853/udp"
-      - "8853:8853/udp"
-      # - "5443:5443/tcp"
-      # - "5443:5443/udp"
+      - "3000:3000/tcp" # Initial setup interface
+      - "853:853/tcp" # DoT
+      - "853:853/udp" # DoT
+      - "784:784/udp" # DoQ
+      - "8853:8853/udp" # DoQ
+      # - "5443:5443/tcp" DNSCrypt
+      # - "5443:5443/udp" DNSCrypt
