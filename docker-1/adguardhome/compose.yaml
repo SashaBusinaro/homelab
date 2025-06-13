@@ -23,8 +23,9 @@ services:
       # - "5443:5443/udp" DNSCrypt
     labels:
       - traefik.enable=true
-      - traefik.http.routers.nginx.entrypoints=web
-      - traefik.http.routers.nginx.rule=Host(`adguard.${DOMAIN}`)
+      - traefik.http.routers.adguardhome.entrypoints=web
+      - traefik.http.routers.adguardhome.rule=Host(`adguard.${DOMAIN}`)
+      - traefik.http.services.adguardhome.loadbalancer.server.port=80
     networks:
       - proxy
 
