@@ -21,3 +21,13 @@ services:
       - "8853:8853/udp" # DoQ
       # - "5443:5443/tcp" DNSCrypt
       # - "5443:5443/udp" DNSCrypt
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.nginx.entrypoints=web
+      - traefik.http.routers.nginx.rule=Host(`adguard.${DOMAIN}`)
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
