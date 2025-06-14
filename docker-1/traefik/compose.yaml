@@ -6,6 +6,13 @@ services:
       - 80:80
       - 443:443
       - 8080:8080
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.tls=true
+      - traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)
+      - traefik.http.services.traefik.loadBalancer.server.port=8080
+      - traefik.http.routers.traefik.entrypoints=websecure
+      - traefik.http.routers.traefik.tls.certresolver=cloudflare
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
