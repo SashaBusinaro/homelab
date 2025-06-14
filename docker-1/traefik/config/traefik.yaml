@@ -3,6 +3,9 @@ global:
   checkNewVersion: false
   sendAnonymousUsage: false
 
+log:
+ level: DEBUG
+
 api:
   dashboard: true
   insecure: true
@@ -10,17 +13,18 @@ api:
 entryPoints:
   web:
     address: :80
-    http:
-      redirections:
-        entryPoint:
-          to: websecure
-          scheme: https
+    # http:
+    #   redirections:
+    #     entryPoint:
+    #       to: websecure
+    #       scheme: https
   websecure:
     address: :443
 
 certificatesResolvers:
   cloudflare:
     acme:
+      email: ${EMAIL}
       storage: acme.json
       caServer: "https://acme-staging-v02.api.letsencrypt.org/directory"
       dnsChallenge:
