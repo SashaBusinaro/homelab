@@ -13,7 +13,6 @@ services:
     environment:
       - TZ=${TZ}
       - CF_DNS_API_TOKEN=${CLOUDFLARE_API_TOKEN}
-      - TRAEFIK_CERTIFICATESRESOLVERS_CLOUDFLARE_ACME_EMAIL=${EMAIL}
     networks:
       - proxy
     restart: unless-stopped
